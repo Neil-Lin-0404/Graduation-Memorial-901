@@ -1,0 +1,13 @@
+@import url("../tokens.css");
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: var(--radius-full);
+  background: color-mix(in oklab, var(--surface-container) 85%, var(--secondary-container));
+  color: var(--on-surface);
+  border: 1px solid var(--outline-variant);
+  font-size: 13px;
+  line-height: 1.2;
+}

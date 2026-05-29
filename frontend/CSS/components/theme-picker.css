@@ -1,0 +1,176 @@
+@import url("../tokens.css");
+
+.theme-picker {
+  position: relative;
+}
+
+.theme-picker__toggle {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-full);
+  background: var(--surface-container-low);
+  cursor: pointer;
+  overflow: hidden;
+  transition: box-shadow var(--dur-hover) var(--ease-standard), background var(--dur-hover) var(--ease-standard);
+}
+
+.theme-picker__toggle:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.theme-picker__toggle:focus-visible {
+  outline: 2px solid var(--secondary);
+  outline-offset: 2px;
+}
+
+/* In-place 180° only: gradient is fixed on the sphere and turns with it (not 360°) */
+.theme-picker__moon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, #f4f6f8 0%, #f4f6f8 50%, #2a3542 50%, #2a3542 100%);
+  box-shadow:
+    inset -3px -2px 6px rgba(0, 0, 0, 0.18),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.35),
+    0 1px 2px rgba(0, 0, 0, 0.12);
+  transform: rotate(0deg);
+  transform-origin: center center;
+  transition: transform 0.32s cubic-bezier(0.34, 1.25, 0.55, 1.05);
+  will-change: transform;
+}
+
+/* Open: exactly 180° — stays until list closes */
+.theme-picker__toggle.is-moon-open .theme-picker__moon {
+  transform: rotate(180deg);
+}
+
+.theme-picker__list {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 40;
+  min-width: 168px;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--outline-variant);
+  background: var(--surface-container-high);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.14);
+  overflow: hidden;
+  transform-origin: top center;
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.theme-picker__list.is-open {
+  pointer-events: auto;
+  visibility: visible;
+  opacity: 1;
+}
+
+.theme-picker__item {
+  margin: 0;
+  padding: 0;
+}
+
+.theme-picker__option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 12px;
+  border: 0;
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--on-surface);
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+  opacity: 0;
+  transform: translateY(-28px) scale(0.92);
+}
+
+.theme-picker__list.is-open .theme-picker__option {
+  animation: themeDropBounce 0.32s cubic-bezier(0.22, 1.2, 0.48, 1) forwards;
+}
+
+.theme-picker__list.is-open .theme-picker__item:nth-child(1) .theme-picker__option {
+  animation-delay: 0.02s;
+}
+.theme-picker__list.is-open .theme-picker__item:nth-child(2) .theme-picker__option {
+  animation-delay: 0.05s;
+}
+.theme-picker__list.is-open .theme-picker__item:nth-child(3) .theme-picker__option {
+  animation-delay: 0.08s;
+}
+.theme-picker__list.is-open .theme-picker__item:nth-child(4) .theme-picker__option {
+  animation-delay: 0.11s;
+}
+
+@keyframes themeDropBounce {
+  0% {
+    opacity: 0;
+    transform: translateY(-28px) scale(0.88);
+  }
+  52% {
+    opacity: 1;
+    transform: translateY(5px) scale(1.03);
+  }
+  72% {
+    transform: translateY(-7px) scale(0.99);
+  }
+  86% {
+    transform: translateY(2px) scale(1.01);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.theme-picker__swatch {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid var(--outline-variant);
+}
+
+.theme-picker__swatch--cream {
+  background: linear-gradient(135deg, #f5f2e9 50%, #3d5570 50%);
+}
+.theme-picker__swatch--sky {
+  background: linear-gradient(135deg, #e8f2fa 50%, #2a6b9e 50%);
+}
+.theme-picker__swatch--blue {
+  background: linear-gradient(135deg, #2a415e 50%, #d3e4ff 50%);
+}
+.theme-picker__swatch--slate {
+  background: linear-gradient(135deg, #1a1b1e 50%, #e8eaed 50%);
+}
+
+.theme-picker__option[aria-selected="true"] {
+  background: var(--surface-container);
+  font-weight: 600;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-picker__moon {
+    transition: none;
+  }
+  .theme-picker__toggle.is-moon-open .theme-picker__moon {
+    transform: rotate(180deg);
+  }
+  .theme-picker__list.is-open .theme-picker__option {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}

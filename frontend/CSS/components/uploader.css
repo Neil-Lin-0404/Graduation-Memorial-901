@@ -1,0 +1,25 @@
+@import url("../tokens.css");
+
+.uploader__preview {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 12px;
+}
+
+.uploader__thumb {
+  display: grid;
+  gap: 8px;
+}
+
+.uploader__thumb img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: var(--radius);
+  border: 1px solid var(--outline-variant);
+}
+
+.uploader__rm {
+  padding: 6px 8px;
+  font-size: 13px;
+}

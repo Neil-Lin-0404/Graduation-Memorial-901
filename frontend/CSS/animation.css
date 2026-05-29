@@ -1,0 +1,10 @@
+.lift-on-hover {
+  transition: transform var(--dur-hover) var(--ease-standard), box-shadow var(--dur-hover) var(--ease-standard);
+  will-change: transform;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .lift-on-hover:hover {
+    transform: translateY(-4px);
+  }
+}

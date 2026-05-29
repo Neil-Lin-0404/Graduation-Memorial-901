@@ -1,0 +1,51 @@
+@import url("../tokens.css");
+
+.memory-card {
+  background: var(--surface-container);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  display: grid;
+  gap: var(--space-sm);
+  color: var(--on-surface);
+}
+
+.memory-card__top {
+  display: grid;
+  gap: 6px;
+}
+
+.memory-card__excerpt {
+  margin: 0;
+}
+
+.memory-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.memory-card__polaroid {
+  max-width: 280px;
+}
+
+.memory-card__open {
+  justify-self: start;
+}
+
+.feed-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+@media (min-width: 641px) {
+  .feed-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1025px) {
+  .feed-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

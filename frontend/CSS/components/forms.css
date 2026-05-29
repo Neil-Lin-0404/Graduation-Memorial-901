@@ -1,0 +1,53 @@
+@import url("../tokens.css");
+
+.field {
+  display: grid;
+  gap: 8px;
+}
+
+.input,
+textarea.input {
+  width: 100%;
+  border-radius: var(--radius);
+  border: 1px solid var(--outline-variant);
+  background: color-mix(in oklab, var(--surface-container-low) 80%, transparent);
+  color: var(--on-surface);
+  padding: 10px 12px;
+  outline: none;
+  transition: box-shadow var(--dur-hover) var(--ease-standard), border-color var(--dur-hover) var(--ease-standard);
+}
+
+.input:focus {
+  border-color: color-mix(in oklab, var(--secondary) 65%, var(--outline-variant));
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--secondary) 22%, transparent);
+}
+
+.notice {
+  border-radius: var(--radius-lg);
+  padding: 12px 12px;
+  border: 1px solid var(--outline-variant);
+  background: var(--surface-container-low);
+  color: var(--on-surface);
+}
+
+.notice--success {
+  border-color: var(--status-success-border);
+  background: var(--status-success-bg);
+}
+
+.notice--warn {
+  border-color: var(--status-warn-border);
+  background: var(--status-warn-bg);
+}
+
+.notice--error {
+  border-color: color-mix(in oklab, var(--error) 55%, var(--outline-variant));
+  background: color-mix(in oklab, var(--error-container) 35%, var(--surface-container-low));
+  color: var(--on-surface);
+}
+
+.auth-tabs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}

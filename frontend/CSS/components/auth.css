@@ -1,0 +1,9 @@
+@import url("../tokens.css");
+
+.auth-card {
+  background: var(--surface-container);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  color: var(--on-surface);
+}
