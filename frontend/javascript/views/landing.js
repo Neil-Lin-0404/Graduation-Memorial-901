@@ -52,6 +52,8 @@ export async function renderLandingView() {
   img.className = "landing-hero__img";
   img.src = HERO_IMAGE_SRC;
   img.alt = "國中三年旅程";
+  img.width = 960;
+  img.height = 640;
   img.decoding = "async";
   img.fetchPriority = "high";
   img.addEventListener("error", () => {

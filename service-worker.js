@@ -1,4 +1,4 @@
-const CACHE = "dmb-static-v4";
+const CACHE = "dmb-static-v5";
 
 const BASE = self.location.pathname.replace(/[^/]+$/, "");
 
