@@ -11,6 +11,14 @@ cd /path/to/Graduation && python3 -m http.server 5174
 
 Open http://localhost:5174/ or http://localhost:5174/index.htm
 
+## GitHub Pages
+
+Project site URL (repo `Graduation-Memorial-901`):
+
+https://neil-lin-0404.github.io/Graduation-Memorial-901/
+
+Deploy from the **repository root** (`/` branch, `/ (root)` folder). Paths auto-detect the `/Graduation-Memorial-901` prefix on `*.github.io`.
+
 the website will be images heavy 
 This website should be RWD (Phone , Pad , Laptop , PC )
 This website will be animation heavy

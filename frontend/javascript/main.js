@@ -3,6 +3,7 @@ import { appState } from "./state.js";
 import { bindShellEvents } from "./shell.js";
 import { syncThemePickerUi, initThemePicker } from "./themePicker.js";
 import { createLogger } from "./logger.js";
+import { getServiceWorkerUrl } from "./paths.js";
 
 const log = createLogger("main");
 
@@ -20,7 +21,7 @@ router.start();
 
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker
-    .register("/service-worker.js")
+    .register(getServiceWorkerUrl())
     .then(() => log.info("serviceWorker:registered"))
     .catch((err) => log.warn("serviceWorker:failed", { err: String(err) }));
 }

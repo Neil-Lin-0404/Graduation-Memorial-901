@@ -8,6 +8,7 @@ import { renderMessagesView } from "./views/messages.js";
 import { createLogger } from "./logger.js";
 import { revokeAllObjectUrls } from "./utils.js";
 import { enhanceLazyImages } from "./animation.js";
+import { getAppBasePath, stripAppBase, toAppUrl } from "./paths.js";
 
 const log = createLogger("router");
 
@@ -31,13 +32,19 @@ function matchRoute(pathname) {
 }
 
 function getPathname() {
-  let pathname = window.location.pathname || "/";
-  if (
-    pathname === "/index.htm" ||
-    pathname === "/index.html" ||
-    pathname === "/frontend/index.htm" ||
-    pathname === "/frontend/index.html"
-  ) {
+  let pathname = stripAppBase(window.location.pathname || "/");
+  const base = getAppBasePath();
+  const indexPaths = new Set([
+    "/index.htm",
+    "/index.html",
+    "/frontend/index.htm",
+    "/frontend/index.html",
+  ]);
+  if (base) {
+    indexPaths.add(`${base}/index.htm`);
+    indexPaths.add(`${base}/index.html`);
+  }
+  if (indexPaths.has(window.location.pathname || "/")) {
     pathname = "/";
   }
   return pathname;
@@ -83,21 +90,26 @@ function navigate(to) {
   if (typeof to !== "string") return;
   const normalized = to.startsWith("/") ? to : `/${to}`;
   if (normalized === getPathname()) return;
-  log.info("navigate", { to: normalized });
-  history.pushState({}, "", normalized);
+  const url = toAppUrl(normalized);
+  log.info("navigate", { to: url });
+  history.pushState({}, "", url);
   void renderCurrent();
 }
 
 function normalizeEntryUrl() {
   const raw = window.location.pathname || "/";
-  if (
+  const base = getAppBasePath();
+  const shouldNormalize =
     raw === "/index.htm" ||
     raw === "/index.html" ||
     raw === "/frontend/index.htm" ||
-    raw === "/frontend/index.html"
-  ) {
-    history.replaceState({}, "", "/");
-    log.info("normalizeEntryUrl", { from: raw, to: "/" });
+    raw === "/frontend/index.html" ||
+    (base && (raw === `${base}/index.htm` || raw === `${base}/index.html`));
+
+  if (shouldNormalize) {
+    const target = toAppUrl("/");
+    history.replaceState({}, "", target);
+    log.info("normalizeEntryUrl", { from: raw, to: target });
   }
 }
 

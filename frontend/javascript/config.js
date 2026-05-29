@@ -1,7 +1,8 @@
 export const config = {
   appName: "DigitalMemoryBook",
   logLevel: "debug",
-  staticBase: "/frontend/",
+  /** GitHub Pages project repo name (user.github.io/REPO/) */
+  githubPagesRepo: "Graduation-Memorial-901",
 
   auth: {
     minPasswordLength: 6,
