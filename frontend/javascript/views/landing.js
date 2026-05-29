@@ -1,10 +1,10 @@
 import { createLogger } from "../logger.js";
 import { initHeroCopyDrag } from "../landingHero.js";
+import { config } from "../config.js";
 
 const log = createLogger("landing");
 
-const HERO_IMAGE_SRC =
-  "images/9th/group/HeroImage.jpg";
+const HERO_IMAGE_SRC = `${config.staticBase}images/9th/group/HeroImage.jpg`;
 
 const GRADE_OPTIONS = [
   { value: "all", label: "全部" },

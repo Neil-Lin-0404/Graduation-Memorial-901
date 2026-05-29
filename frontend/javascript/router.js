@@ -32,7 +32,14 @@ function matchRoute(pathname) {
 
 function getPathname() {
   let pathname = window.location.pathname || "/";
-  if (pathname === "/index.htm" || pathname === "/index.html") pathname = "/";
+  if (
+    pathname === "/index.htm" ||
+    pathname === "/index.html" ||
+    pathname === "/frontend/index.htm" ||
+    pathname === "/frontend/index.html"
+  ) {
+    pathname = "/";
+  }
   return pathname;
 }
 
@@ -83,7 +90,12 @@ function navigate(to) {
 
 function normalizeEntryUrl() {
   const raw = window.location.pathname || "/";
-  if (raw === "/index.htm" || raw === "/index.html") {
+  if (
+    raw === "/index.htm" ||
+    raw === "/index.html" ||
+    raw === "/frontend/index.htm" ||
+    raw === "/frontend/index.html"
+  ) {
     history.replaceState({}, "", "/");
     log.info("normalizeEntryUrl", { from: raw, to: "/" });
   }

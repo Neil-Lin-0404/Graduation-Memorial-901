@@ -20,7 +20,7 @@ router.start();
 
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker
-    .register("./service-worker.js")
+    .register("/service-worker.js")
     .then(() => log.info("serviceWorker:registered"))
     .catch((err) => log.warn("serviceWorker:failed", { err: String(err) }));
 }

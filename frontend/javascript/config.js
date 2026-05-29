@@ -1,6 +1,7 @@
 export const config = {
   appName: "DigitalMemoryBook",
   logLevel: "debug",
+  staticBase: "/frontend/",
 
   auth: {
     minPasswordLength: 6,

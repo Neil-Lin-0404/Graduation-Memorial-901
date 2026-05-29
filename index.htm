@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="zh-Hant" data-theme="cream">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="no-referrer" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+        default-src 'self';
+        base-uri 'none';
+        object-src 'none';
+        frame-ancestors 'none';
+        script-src 'self';
+        worker-src 'self';
+        style-src 'self';
+        img-src 'self' blob: data:;
+        font-src 'self' data:;
+        connect-src 'self';
+        form-action 'self';
+        upgrade-insecure-requests;
+      "
+    />
+
+    <title>Digital Memory Book</title>
+    <link rel="stylesheet" href="/frontend/CSS/general.css" />
+    <link rel="stylesheet" href="/frontend/CSS/animation.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="topbar-inner">
+          <div class="brand">
+            <button class="ui-link brand-title" type="button" data-nav="/" aria-label="Go to home">
+              Digital Memory Book
+            </button>
+            <div class="brand-subtitle">Graduation Archive</div>
+          </div>
+          <div class="topbar-spacer"></div>
+
+          <div class="topbar-actions">
+            <button class="ui-btn ui-btn--ghost" type="button" data-nav="/feed">時間軸</button>
+            <button class="ui-btn ui-btn--ghost" type="button" data-nav="/messages">留言</button>
+
+            <div class="theme-picker" id="theme-picker">
+              <button
+                type="button"
+                class="theme-picker__toggle"
+                aria-expanded="false"
+                aria-haspopup="listbox"
+                aria-label="切換主題色彩"
+              >
+                <span class="theme-picker__moon" aria-hidden="true"></span>
+              </button>
+              <ul class="theme-picker__list" role="listbox" aria-label="主題列表">
+                <li class="theme-picker__item" role="presentation">
+                  <button type="button" class="theme-picker__option" data-theme-option="cream" role="option">
+                    <span class="theme-picker__swatch theme-picker__swatch--cream" aria-hidden="true"></span>
+                    奶油紙感
+                  </button>
+                </li>
+                <li class="theme-picker__item" role="presentation">
+                  <button type="button" class="theme-picker__option" data-theme-option="sky" role="option">
+                    <span class="theme-picker__swatch theme-picker__swatch--sky" aria-hidden="true"></span>
+                    天空藍
+                  </button>
+                </li>
+                <li class="theme-picker__item" role="presentation">
+                  <button type="button" class="theme-picker__option" data-theme-option="blue" role="option">
+                    <span class="theme-picker__swatch theme-picker__swatch--blue" aria-hidden="true"></span>
+                    學院深藍
+                  </button>
+                </li>
+                <li class="theme-picker__item" role="presentation">
+                  <button type="button" class="theme-picker__option" data-theme-option="slate" role="option">
+                    <span class="theme-picker__swatch theme-picker__swatch--slate" aria-hidden="true"></span>
+                    深夜灰
+                  </button>
+                </li>
+              </ul>
+            </div>
+
+            <button class="ui-btn ui-btn--primary" type="button" data-nav="/auth">登入</button>
+          </div>
+        </div>
+      </header>
+
+      <main id="app" class="app-main" role="main"></main>
+    </div>
+
+    <script type="module" src="/frontend/javascript/main.js"></script>
+  </body>
+</html>

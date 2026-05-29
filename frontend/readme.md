@@ -1,6 +1,16 @@
 Please make the website function distribute
 websites are contained in single index.htm file which means there will be no <a href> in index.htm
 
+## Local dev
+
+Run the static server from the **project root** (not `frontend/`):
+
+```bash
+cd /path/to/Graduation && python3 -m http.server 5174
+```
+
+Open http://localhost:5174/ or http://localhost:5174/index.htm
+
 the website will be images heavy 
 This website should be RWD (Phone , Pad , Laptop , PC )
 This website will be animation heavy
